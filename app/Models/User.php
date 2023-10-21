@@ -61,4 +61,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Notification::class, 'user_id', 'id');
     }
+
+    /**
+     * Get all of the wisata for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function wisata()
+    {
+        return $this->hasMany(Wisata::class, 'user_id', 'id');
+    }
 }

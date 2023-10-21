@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
+                        Tambah Kategori
                     </button>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="users-table" width="100%" cellspacing="0">

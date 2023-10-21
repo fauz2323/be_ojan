@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('latitude');
             $table->double('longitude');
             $table->string('operating_hours');
+            $table->string('click_total')->nullable()->default(0);
             $table->timestamps();
         });
     }

@@ -15,8 +15,18 @@ class WisataCategory extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function admin()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get all of the wisata for the WisataCategory
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function wisata()
+    {
+        return $this->hasMany(Wisata::class, 'wisata_category_id', 'id');
     }
 }

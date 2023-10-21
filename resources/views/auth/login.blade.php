@@ -8,9 +8,9 @@
         <div class="card card-bordered">
             <div class="brand-logo p-3 text-center">
                 <a href="{{ url('/') }}" class="logo-link">
-                    <img class="logo-light logo-img logo-img-lg" src="{{ asset('xz.png') }}" srcset="./xz.png 2x"
+                    <img class="logo-light logo-img logo-img-lg" src="{{ asset('icon.png') }}" srcset="./icon.png 2x"
                         alt="logo">
-                    <img class="logo-dark logo-img logo-img-lg" src="{{ asset('xz.png') }}" srcset="./xz.png 2x"
+                    <img class="logo-dark logo-img logo-img-lg" src="{{ asset('icon.png') }}" srcset="./icon.png 2x"
                         alt="logo-darkz">
                 </a>
             </div>
@@ -27,7 +27,7 @@
                     @csrf
                     <div class="form-group">
                         <div class="form-label-group">
-                            <label class="form-label" for="default-01">Username</label>
+                            <label class="form-label" for="default-01">Email</label>
                         </div>
                         <div class="form-control-wrap">
                             <input type="email" name="email" value="{{ old('email') }}"
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <div class="form-label-group">
-                            <label class="form-label" for="password">Passcode</label>
+                            <label class="form-label" for="password">Password</label>
                             <a class="link link-primary link-sm" href="{{ route('password.request') }}">Forgot Code?</a>
                         </div>
                         <div class="form-control-wrap">

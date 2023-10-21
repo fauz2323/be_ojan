@@ -33,10 +33,10 @@
                     </div>
                     <div class="nk-sidebar-brand">
                         <a href="{{ route('home') }}" class="logo-link nk-sidebar-logo">
-                            <img class="logo-light" width="180" src="{{ asset('js/tittleLogo.png') }}"
-                                srcset="{{ asset('js/tittleLogo.png') }} x2" alt="logo">
-                            <img class="logo-dark logo-img" width="180" src="{{ asset('js/tittleLogo.png') }}"
-                                srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                            <img class="logo-light" width="50" src="{{ asset('icon.png') }}"
+                                srcset="{{ asset('icon.png') }} x2" alt="logo">
+                            <img class="logo-dark logo-img" width="50" src="{{ asset('icon.png') }}"
+                                srcset="./icon.png.png 2x" alt="logo-dark">
                         </a>
                     </div>
                 </div><!-- .nk-sidebar-element -->
@@ -70,7 +70,7 @@
                                         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                             <div class="user-toggle">
                                                 <div>
-                                                    <img src="{{ asset('iconW.png') }}" height="32px" width="32px"
+                                                    <img src="{{ asset('profile.png') }}" height="32px" width="32px"
                                                         class="m-2">
                                                 </div>
                                                 <div class="user-info d-none d-md-block">
@@ -137,7 +137,7 @@
                 <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2022 BoosterRig. Template by Booster~Team
+                            <div class="nk-footer-copyright"> &copy; 2022 Trip. Template by Ojan
                             </div>
                             <div class="nk-footer-links">
 

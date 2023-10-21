@@ -38,19 +38,12 @@
             </a>
         </li>
 
-        <li class="nk-menu-item">
-            <a href="" class="nk-menu-link">
-                <span class="nk-menu-icon"><i class="icon fa-solid fa-gem"></i></span>
-                <span class="nk-menu-text">Version Apps</span>
-            </a>
-        </li>
-
         <li class="nk-menu-heading">
             <h6 class="overline-title text-primary-alt">Setting</h6>
         </li><!-- .nk-menu-heading -->
         <li class="nk-menu-item">
-            <a href="" class="nk-menu-link">
-                <span class="nk-menu-icon"><i class="icon fa-solid fa-gem"></i></span>
+            <a href="#" class="nk-menu-link">
+                <span class="nk-menu-icon"><i class="fa-solid fa-gear"></i></span>
                 <span class="nk-menu-text">Setting</span>
             </a>
         </li>

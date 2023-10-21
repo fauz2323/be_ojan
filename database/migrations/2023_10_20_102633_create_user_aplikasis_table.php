@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wisata_categories', function (Blueprint $table) {
+        Schema::create('user_aplikasis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('category');
+            $table->string('username')->unique();
+            $table->string('nama');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wisata_categories');
+        Schema::dropIfExists('user_aplikasis');
     }
 };
