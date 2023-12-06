@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //wisata
     Route::get('/wisata', [App\Http\Controllers\Api\WisataApiController::class, 'getWisata']);
-    Route::get('/wisata/id/{id}', [App\Http\Controllers\Api\WisataApiController::class, 'getWisataById']);
+    Route::post('/wisata/detail', [App\Http\Controllers\Api\WisataApiController::class, 'getWisataById']);
     Route::post('/wisata/by/category', [App\Http\Controllers\Api\WisataApiController::class, 'getWisataByCategory']);
     Route::get('/wisata/category', [App\Http\Controllers\Api\WisataApiController::class, 'getCategory']);
 });

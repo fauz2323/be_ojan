@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Wisata;
 use App\Models\WisataCategory;
+use App\Models\WisataClick;
 use App\Models\WisataImage;
 use App\Models\WisataInfo;
 use Illuminate\Http\Request;
@@ -82,6 +83,11 @@ class WisataAdminController extends Controller
         $info->email = $request->email ?? '-';
         $info->website = $request->web ?? '-';
         $info->save();
+
+        $click = new WisataClick();
+        $click->wisata_id = $request->id;
+        $click->user_click = 0;
+        $click->save();
 
         foreach ($request->file('image') as $key) {
             $name = Uuid::uuid4() . '.' . $key->getClientOriginalExtension();

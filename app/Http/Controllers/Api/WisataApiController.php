@@ -18,28 +18,24 @@ class WisataApiController extends Controller
         ]);
     }
 
-    public function getWisataById($id)
+    public function getWisataById(Request $request)
     {
-        $wisata = Wisata::find($id);
-        if ($wisata->clicks) {
-            $wisata->clicks->user_click = $wisata->clicks->user_click + 1;
-            $wisata->clicks->save();
-            # code...
-        } else {
-            $click = new WisataClick();
-            $click->user_click = 1;
-            $click->save();
-        }
+        $request->validate([
+            'id' => 'required',
+        ]);
+        $wisata = Wisata::with('image', 'clicks', 'info', 'kategori')->where('id', $request->id)->first();
+
         return response()->json([
-            'wisata' => $wisata,
-            'info' => $wisata->info,
-            'views' => $wisata->clicks,
+            'detail' => $wisata,
         ]);
     }
 
     public function getWisataByCategory(Request $request)
     {
-        $wisata = Wisata::where('wisata_category_id', $request->id)->get();
+        $request->validate([
+            'id' => 'required',
+        ]);
+        $wisata = Wisata::where('wisata_category_id', $request->id)->with('image')->get();
         return response()->json([
             'wisata' => $wisata,
         ]);
