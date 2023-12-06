@@ -24,11 +24,13 @@
                             <thead>
                                 <tr>
                                     <th>number</th>
+                                    <th>Pembuat</th>
                                     <th>Nama Wisata</th>
+                                    <th>Kategori</th>
+                                    <th>Alamat</th>
                                     <th>Latitude</th>
                                     <th>Logitude</th>
                                     <th>Tanggal Dibuat</th>
-                                    <th>Dibuat Oleh</th>
                                     <th>action</th>
                                 </tr>
                             </thead>
@@ -58,12 +60,28 @@
                         }
                     },
                     {
-                        data: 'user.name',
-                        name: 'user.name'
+                        data: 'admin.name',
+                        name: 'admin.name'
                     },
                     {
-                        data: 'category',
-                        name: 'category'
+                        data: 'nama',
+                        name: 'nama'
+                    },
+                    {
+                        data: 'kategori.category',
+                        name: 'kategori.category'
+                    },
+                    {
+                        data: 'alamat',
+                        name: 'alamat'
+                    },
+                    {
+                        data: 'latitude',
+                        name: 'latitude'
+                    },
+                    {
+                        data: 'longitude',
+                        name: 'longitude'
                     },
                     {
                         data: 'date',
@@ -73,8 +91,8 @@
                         data: 'action',
                         name: 'action',
                         orderable: false,
-                        searchable: false,
-                    },
+                        searchable: false
+                    }
 
                 ]
             });

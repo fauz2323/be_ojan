@@ -18,7 +18,7 @@ class CategoryAdminController extends Controller
     {
         //ajax request datatables
         if ($request->ajax()) {
-            $data = WisataCategory::with('user')->get();
+            $data = WisataCategory::with('admin')->get();
             return datatables()::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {

@@ -26,7 +26,6 @@ class NotificationAdminController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="' . route('admin.notification.edit', Crypt::encrypt($row->id)) . '" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary m-1 btn-sm editNotification">Edit</a>';
                     $btn = $btn . ' <a href="' . route('admin.notification.delete', Crypt::encrypt($row->id)) . '" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger m-1 btn-sm deleteNotification">Delete</a>';
-                    $btn = $btn . ' <a href="' . route('admin.notification.publish', Crypt::encrypt($row->id)) . '" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="View" class="btn btn-success m-1 btn-sm viewNotification">publish</a>';
 
                     return $btn;
                 })

@@ -12,14 +12,7 @@ class UserAplikasi extends Model
     use HasFactory, HasApiTokens;
 
     protected $guarded = [];
-
-    /**
-     * Get all of the favorite for the UserAplikasi
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function favorite(): HasMany
-    {
-        return $this->hasMany(UserFavorite::class, 'user_aplikasi_id', 'id');
-    }
+    protected $hidden = [
+        'password',
+    ];
 }

@@ -18,7 +18,7 @@
             <div class="card card-bordered p-3">
                 <div class="card-body">
                     <!-- Button trigger modal -->
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.wisata.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-12 col-md-5">
@@ -27,12 +27,13 @@
                             <div class="col-12 col-md-5">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Nama Wisata</label>
-                                    <input type="text" class="form-control" required id="exampleFormControlInput1"
-                                        placeholder="Nama Wisata">
+                                    <input type="text" class="form-control" name="nama" required
+                                        id="exampleFormControlInput1" placeholder="Nama Wisata">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Kategory Wisata</label>
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" name="wisata_category_id"
+                                        aria-label="Default select example">
                                         <option selected>Open this select menu</option>
                                         @foreach ($category as $item)
                                             <option value="{{ $item->id }}">{{ $item->category }}</option>
@@ -41,30 +42,49 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Alamat Wisata</label>
-                                    <textarea class="form-control" required id="exampleFormControlTextarea1" rows="2"></textarea>
+                                    <textarea class="form-control" required name="alamat" id="exampleFormControlTextarea1" rows="2"></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Latitude Wisata</label>
-                                    <input type="text" class="form-control" required id="latitude"
+                                    <input type="text" class="form-control" name="latitude" required id="latitude"
                                         placeholder="latitude">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Longitude Wisata</label>
-                                    <input type="text" class="form-control" required id="longitude"
+                                    <input type="text" class="form-control" name="longitude" required id="longitude"
                                         placeholder="longitude">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Jam Operasi Wisata</label>
-                                    <input type="text" class="form-control" required placeholder="04:00 AM - 04:00 PM">
+                                    <input type="text" class="form-control" name="operating_hours" required
+                                        placeholder="04:00 AM - 04:00 PM">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Wisata</label>
-                                    <textarea class="form-control" required id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" name="deskripsi" required id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Telp. Pengelola Wisata</label>
+                                    <input type="text" class="form-control" name="telp" id="telp"
+                                        placeholder="Telp. Pengelola">
+                                    <small id="emailHelp" class="form-text text-muted">Kosongkan jika tidak ada</small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email Wisata</label>
+                                    <input type="email" class="form-control" name="email" id="telp"
+                                        placeholder="Email">
+                                    <small id="emailHelp" class="form-text text-muted">Kosongkan jika tidak ada</small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Website Wisata</label>
+                                    <input type="text" class="form-control" name="web" id="web"
+                                        placeholder="Website">
+                                    <small id="emailHelp" class="form-text text-muted">Kosongkan jika tidak ada</small>
                                 </div>
                                 <div class="form-group increment">
                                     <label for="">Photo</label>
                                     <div class="input-group">
-                                        <input type="file" name="pp[]" class="form-control">
+                                        <input type="file" name="image[]" class="form-control">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-outline-primary btn-add"><i
                                                     class="fas fa-plus-square"></i></button>
@@ -73,19 +93,23 @@
                                 </div>
                                 <div class="clone invisible">
                                     <div class="input-group mt-2">
-                                        <input type="file" name="pp[]" class="form-control">
+                                        <input type="file" name="image[]" class="form-control">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-outline-danger btn-remove"><i
                                                     class="fas fa-minus-square"></i></button>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary col-12">Simpan Data</button>
                                 </div>
                             </div>
                         </div>
                     </form>
+                    @if ($errors->any())
+                        {!! implode('', $errors->all('<div>:message</div>')) !!}
+                    @endif
                 </div>
             </div>
         </div>

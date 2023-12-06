@@ -9,16 +9,15 @@ use Illuminate\Support\Facades\Hash;
 
 class InitialSeeder extends Seeder
 {
-  /**
-   * Run the database seeds.
-   */
-  public function run(): void
-  {
-    User::create([
-      'name' => 'Admin',
-      'email' => 'admin@admin.com',
-      'password' => Hash::make('password')
-
-    ]);
-  }
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('password')
+        ]);
+    }
 }

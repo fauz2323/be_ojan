@@ -49,4 +49,14 @@ class Wisata extends Model
     {
         return $this->hasOne(WisataInfo::class, 'wisata_id', 'id');
     }
+
+    /**
+     * Get the clicks associated with the Wisata
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function clicks()
+    {
+        return $this->hasOne(WisataClick::class, 'wisata_id', 'id');
+    }
 }

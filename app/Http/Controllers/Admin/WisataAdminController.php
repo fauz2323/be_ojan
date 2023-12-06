@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Wisata;
 use App\Models\WisataCategory;
 use App\Models\WisataImage;
+use App\Models\WisataInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Ramsey\Uuid\Uuid;
 use Yajra\DataTables\DataTables;
 
@@ -22,18 +25,21 @@ class WisataAdminController extends Controller
     {
         //request ajax datatable
         if ($request->ajax()) {
-            $data = Wisata::latest()->get();
+            $data = Wisata::with('admin', 'kategori')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
 
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editWisata">Edit</a>';
+                    $btn = '<a href="' . route('admin.wisata.edit', Crypt::encrypt($row->id)) . '" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editWisata m-1">Edit</a>';
 
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteWisata">Delete</a>';
+                    $btn = $btn . ' <a href="' . route('admin.wisata.delete', Crypt::encrypt($row->id)) . '" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteWisata m-1">Delete</a>';
 
                     return $btn;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('date', function ($row) {
+                    return $row->created_at->format('d-m-Y');
+                })
+                ->rawColumns(['action', 'date'])
                 ->make(true);
         }
         return view('admin.wisata.index');
@@ -54,19 +60,28 @@ class WisataAdminController extends Controller
             'deskripsi' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
-            'opening_hours' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'operating_hours' => 'required',
+            'image' => 'required',
+
         ]);
 
         $wisata = new Wisata();
         $wisata->wisata_category_id = $request->wisata_category_id;
+        $wisata->user_id = Auth::user()->id;
         $wisata->nama = $request->nama;
         $wisata->alamat = $request->alamat;
         $wisata->deskripsi = $request->deskripsi;
         $wisata->latitude = $request->latitude;
         $wisata->longitude = $request->longitude;
-        $wisata->opening_hours = $request->opening_hours;
+        $wisata->operating_hours = $request->operating_hours;
         $wisata->save();
+
+        $info = new WisataInfo();
+        $info->wisata_id = $wisata->id;
+        $info->phone = $request->telp ?? '-';
+        $info->email = $request->email ?? '-';
+        $info->website = $request->web ?? '-';
+        $info->save();
 
         foreach ($request->file('image') as $key) {
             $name = Uuid::uuid4() . '.' . $key->getClientOriginalExtension();
@@ -75,17 +90,20 @@ class WisataAdminController extends Controller
 
             $image = new WisataImage();
             $image->wisata_id = $wisata->id;
-            $image->image = $key->store('wisata');
+            $image->image = $name;
+            $image->uuid = Uuid::uuid4();
             $image->save();
         }
 
-        return redirect()->back()->with('success', 'Wisata berhasil ditambahkan');
+        return redirect()->route('admin.wisata.index')->with('success', 'Wisata berhasil ditambahkan');
     }
 
     public function edit($id)
     {
-        $wisata = Wisata::find($id);
-        return response()->json($wisata);
+        $wisata = Wisata::find(Crypt::decrypt($id));
+        $category = WisataCategory::all();
+
+        return view('admin.wisata.edit', compact('wisata', 'category'));
     }
 
     public function update(Request $request, $id)
@@ -100,14 +118,15 @@ class WisataAdminController extends Controller
             'opening_hours' => 'required',
         ]);
 
-        $wisata = Wisata::find($id);
+        $wisata = new Wisata();
         $wisata->wisata_category_id = $request->wisata_category_id;
+        $wisata->user_id = Auth::user()->id;
         $wisata->nama = $request->nama;
         $wisata->alamat = $request->alamat;
         $wisata->deskripsi = $request->deskripsi;
         $wisata->latitude = $request->latitude;
         $wisata->longitude = $request->longitude;
-        $wisata->opening_hours = $request->opening_hours;
+        $wisata->operating_hours = $request->operating_hours;
         $wisata->save();
 
         if ($request->file('image')) {
@@ -128,7 +147,7 @@ class WisataAdminController extends Controller
 
     public function destroy($id)
     {
-        $wisata = Wisata::find($id);
+        $wisata = Wisata::find(Crypt::decrypt($id));
         $wisata->delete();
 
         return redirect()->back()->with('success', 'Wisata berhasil dihapus');

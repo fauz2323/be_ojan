@@ -46,3 +46,9 @@ Route::post('/admin/wisata/store', [App\Http\Controllers\Admin\WisataAdminContro
 Route::get('/admin/wisata/edit/{id}', [App\Http\Controllers\Admin\WisataAdminController::class, 'edit'])->name('admin.wisata.edit');
 Route::post('/admin/wisata/update/{id}', [App\Http\Controllers\Admin\WisataAdminController::class, 'update'])->name('admin.wisata.update');
 Route::get('/admin/wisata/delete/{id}', [App\Http\Controllers\Admin\WisataAdminController::class, 'destroy'])->name('admin.wisata.delete');
+
+//setting
+Route::get('/admin/setting', [App\Http\Controllers\Admin\SettingAdminController::class, 'index'])->name('admin.setting.index');
+
+//version
+Route::post('/admin/version/edit', [App\Http\Controllers\Admin\VersionAdminController::class, 'setVersion'])->name('admin.version.edit');

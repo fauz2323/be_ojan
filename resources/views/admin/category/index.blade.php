@@ -83,8 +83,8 @@
                         }
                     },
                     {
-                        data: 'user.name',
-                        name: 'user.name'
+                        data: 'admin.name',
+                        name: 'admin.name'
                     },
                     {
                         data: 'category',
