@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email Wisata</label>
-                                    <input type="email" class="form-control" name="email" id="telp"
+                                    <input type="text" class="form-control" name="email" id="telp"
                                         placeholder="Email">
                                     <small id="emailHelp" class="form-text text-muted">Kosongkan jika tidak ada</small>
                                 </div>

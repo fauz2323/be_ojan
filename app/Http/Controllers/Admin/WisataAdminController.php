@@ -85,7 +85,7 @@ class WisataAdminController extends Controller
         $info->save();
 
         $click = new WisataClick();
-        $click->wisata_id = $request->id;
+        $click->wisata_id = $wisata->id;
         $click->user_click = 0;
         $click->save();
 
