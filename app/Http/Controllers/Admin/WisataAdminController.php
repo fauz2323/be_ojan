@@ -154,9 +154,11 @@ class WisataAdminController extends Controller
     public function destroy($id)
     {
         $wisata = Wisata::find(Crypt::decrypt($id));
-        $wisata->images->each(function ($image) {
-            $image->delete();
-        });
+        $image = WisataImage::where('wisata_id', $wisata->id)->get();
+        foreach ($image as $key) {
+            $key->delete();
+        }
+
         $wisata->delete();
 
         return redirect()->back()->with('success', 'Wisata berhasil dihapus');
