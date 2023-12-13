@@ -158,7 +158,7 @@ class WisataAdminController extends Controller
         foreach ($image as $key) {
             $key->delete();
         }
-
+        $wisata->info()->delete();
         $wisata->delete();
 
         return redirect()->back()->with('success', 'Wisata berhasil dihapus');
