@@ -59,6 +59,6 @@ Route::get('/downloadApk', function () {
 
     return response()->file($file, [
         'Content-Type' => 'application/vnd.android.package-archive',
-        'Content-Disposition' => 'attachment; filename="StarOne99.apk"',
+        'Content-Disposition' => 'attachment; filename="Wisata bogor.apk"',
     ]);
 })->name('downloadfile');
