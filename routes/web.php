@@ -52,3 +52,13 @@ Route::get('/admin/setting', [App\Http\Controllers\Admin\SettingAdminController:
 
 //version
 Route::post('/admin/version/edit', [App\Http\Controllers\Admin\VersionAdminController::class, 'setVersion'])->name('admin.version.edit');
+
+
+Route::get('/downloadApk', function () {
+    $file = public_path('../../public_html/download/file.apk');
+
+    return response()->file($file, [
+        'Content-Type' => 'application/vnd.android.package-archive',
+        'Content-Disposition' => 'attachment; filename="StarOne99.apk"',
+    ]);
+})->name('downloadfile');
