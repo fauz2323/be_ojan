@@ -47,6 +47,14 @@ Route::get('/admin/wisata/edit/{id}', [App\Http\Controllers\Admin\WisataAdminCon
 Route::post('/admin/wisata/update/{id}', [App\Http\Controllers\Admin\WisataAdminController::class, 'update'])->name('admin.wisata.update');
 Route::get('/admin/wisata/delete/{id}', [App\Http\Controllers\Admin\WisataAdminController::class, 'destroy'])->name('admin.wisata.delete');
 
+//penginapan
+Route::get('/admin/penginapan', [App\Http\Controllers\Admin\PenginapanAdminController::class, 'index'])->name('admin.penginapan.index');
+Route::get('/admin/penginapan/add', [App\Http\Controllers\Admin\PenginapanAdminController::class, 'add'])->name('admin.penginapan.add');
+Route::post('/admin/penginapan/store', [App\Http\Controllers\Admin\PenginapanAdminController::class, 'store'])->name('admin.penginapan.store');
+Route::get('/admin/penginapan/edit/{id}', [App\Http\Controllers\Admin\PenginapanAdminController::class, 'edit'])->name('admin.penginapan.edit');
+Route::post('/admin/penginapan/update/{id}', [App\Http\Controllers\Admin\PenginapanAdminController::class, 'update'])->name('admin.penginapan.update');
+Route::get('/admin/penginapan/delete/{id}', [App\Http\Controllers\Admin\PenginapanAdminController::class, 'destroy'])->name('admin.penginapan.delete');
+
 //setting
 Route::get('/admin/setting', [App\Http\Controllers\Admin\SettingAdminController::class, 'index'])->name('admin.setting.index');
 

@@ -32,6 +32,12 @@
             </ul><!-- .nk-menu-sub -->
         </li><!-- .nk-menu-item -->
         <li class="nk-menu-item">
+            <a href="{{ route('admin.penginapan.index') }}" class="nk-menu-link">
+                <span class="nk-menu-icon"><i class="fa-solid fa-hotel"></i></span>
+                <span class="nk-menu-text">Hotels</span>
+            </a>
+        </li>
+        <li class="nk-menu-item">
             <a href="{{ route('admin.notification.index') }}" class="nk-menu-link">
                 <span class="nk-menu-icon"><i class="icon fa-solid fa-network-wired"></i></span>
                 <span class="nk-menu-text">Notification</span>
