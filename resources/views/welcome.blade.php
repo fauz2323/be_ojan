@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Title -->
-    <title>Wisata Kabupaten Bogor</title>
+    <title>Wisata Kabupaten Tangerang</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
