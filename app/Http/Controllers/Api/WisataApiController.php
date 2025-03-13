@@ -41,6 +41,19 @@ class WisataApiController extends Controller
         ]);
     }
 
+    public function getWisataByCategoryName(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $category = WisataCategory::where('category', $request->name)->first();
+
+        $wisata = Wisata::where('wisata_category_id', $category->id)->with('image')->get();
+        return response()->json([
+            'wisata' => $wisata,
+        ]);
+    }
+
     public function getCategory()
     {
         $category = WisataCategory::all();

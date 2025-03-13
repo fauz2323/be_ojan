@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/wisata', [App\Http\Controllers\Api\WisataApiController::class, 'getWisata']);
     Route::post('/wisata/detail', [App\Http\Controllers\Api\WisataApiController::class, 'getWisataById']);
     Route::post('/wisata/by/category', [App\Http\Controllers\Api\WisataApiController::class, 'getWisataByCategory']);
+    Route::post('/wisata/by/category/name', [App\Http\Controllers\Api\WisataApiController::class, 'getWisataByCategoryName']);
     Route::get('/wisata/category', [App\Http\Controllers\Api\WisataApiController::class, 'getCategory']);
 
     //penginapan
